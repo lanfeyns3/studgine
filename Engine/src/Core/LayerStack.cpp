@@ -20,7 +20,8 @@ namespace studgine
 		{
 			for (auto& layer : layers)
 			{
-				layer->OnUpdate();
+				if (layer->enabled)
+					layer->OnUpdate();
 			}
 		}
 	}

@@ -12,6 +12,13 @@ namespace studgine
 			virtual void OnRemoved() = 0;
 			virtual void OnUpdate() = 0;
 			virtual void OnEvent() = 0;
+
+			void Toggle()
+			{
+				enabled = !enabled;
+			};
+		public:
+			bool enabled = true;
 		};
 	}
 }

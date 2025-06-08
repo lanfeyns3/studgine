@@ -1,7 +1,8 @@
-#ifndef STUD_APPLICATION
+#ifndef SG_APPLICATION
+#define SG_APPLICATION
 #include "LayerStack.h"
 #include "Logging.h"
-#define STUD_APPLICATION
+#include "WindowsManager.h"
 
 namespace studgine
 {
@@ -15,4 +16,4 @@ namespace studgine
 	};
 }
 
-#endif // !STUD_APPLICATION
+#endif // !SG_APPLICATION
