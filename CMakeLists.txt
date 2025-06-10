@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION "3.19.2")
 
+set(GLFW_BUILD_WAYLAND OFF CACHE BOOL "" FORCE)
+
 add_subdirectory("thirdparty/spdlog")
 add_subdirectory("thirdparty/GLFW")
 
