@@ -6,6 +6,12 @@ sudo apt install build-essential
 
 echo ------------------------------------------------------
 
+echo -------------------------- Downloading CMake --------------------------
+
+sudo apt install cmake
+
+echo ------------------------------------------------------
+
 echo -------------------------- Downloading X11 --------------------------
 
 sudo apt install libx11-dev
