@@ -6,12 +6,6 @@ sudo apt install build-essential
 
 echo ------------------------------------------------------
 
-echo -------------------------- Downloading Wayland --------------------------
-
-sudo apt install libwayland-dev
-
-echo ------------------------------------------------------
-
 echo -------------------------- Downloading X11 --------------------------
 
 sudo apt install libx11-dev
