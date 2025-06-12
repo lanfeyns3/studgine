@@ -1,16 +1,26 @@
+#ifndef SG_LAYERSTACK
+#define SG_LAYERSTACK
+
+#pragma once
 #include "Layers/Layer.h"
+
+#include <memory>
 #include <vector>
 
 namespace studgine
 {
 	namespace LayerStack
 	{
-
-		const void AddLayer(Layers::Layer* layer);
-		const void RemoveLayer(Layers::Layer* layer);
+		template <typename T>
+		inline void AddLayer()
+		{
+			layers.emplace_back(std::make_shared<T>());
+			layers.back()->OnAdded();
+		};
 
 		const void UpdateLayers();
 
-		extern std::vector<Layers::Layer*> layers;
+		extern std::vector<std::shared_ptr<Layers::Layer>> layers;
 	}
 }
+#endif // !SG_LAYERSTACK

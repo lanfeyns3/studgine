@@ -8,6 +8,8 @@ namespace studgine
 		class Layer
 		{
 		public:
+			Layer() = default;
+
 			virtual void OnAdded() = 0;
 			virtual void OnRemoved() = 0;
 			virtual void OnUpdate() = 0;
