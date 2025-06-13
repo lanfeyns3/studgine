@@ -13,8 +13,8 @@ namespace studgine
 		Window& AddWindow(const char* name, int width, int height, GLFWwindow* share = nullptr);
 		void UpdateWindows();
 
-		void ShowWindow(unsigned int pos);
-		void HideWindow(unsigned int pos);
+		void ShowWindow(uint32_t pos);
+		void HideWindow(uint32_t pos);
 
 		extern std::vector<Window> windows;
 	}

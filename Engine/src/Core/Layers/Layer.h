@@ -1,6 +1,10 @@
 
 #ifndef STUD_LAYER
 #define STUD_LAYER
+
+#pragma once
+#include <stdint.h>
+
 namespace studgine
 {
 	namespace Layers
@@ -13,7 +17,7 @@ namespace studgine
 			virtual void OnAdded() = 0;
 			virtual void OnRemoved() = 0;
 			virtual void OnUpdate() = 0;
-			virtual void OnEvent() = 0;
+			virtual void OnEvent(void* data,uint32_t type) = 0;
 
 			void Toggle()
 			{

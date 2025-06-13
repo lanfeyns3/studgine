@@ -3,6 +3,7 @@
 #include "LayerStack.h"
 #include "Logging.h"
 #include "WindowsManager.h"
+#include "EventManager.h"
 
 namespace studgine
 {

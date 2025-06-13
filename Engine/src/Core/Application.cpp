@@ -11,6 +11,7 @@ namespace studgine
 		while (true)
 		{
 			LayerStack::UpdateLayers();
+			EventManager::PollEvents();
 			WindowsManager::UpdateWindows();
 		}
 	}

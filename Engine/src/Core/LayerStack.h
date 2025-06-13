@@ -18,6 +18,8 @@ namespace studgine
 			layers.back()->OnAdded();
 		};
 
+		const std::shared_ptr<Layers::Layer> Get(uint32_t pos);
+
 		const void UpdateLayers();
 
 		extern std::vector<std::shared_ptr<Layers::Layer>> layers;

@@ -20,8 +20,7 @@ namespace studgine
 		{
 			if (windows.size() > 0)
 			{
-				glfwPollEvents();
-				for (unsigned int i = 0; i < windows.size(); i++)
+				for (uint32_t i = 0; i < windows.size(); i++)
 				{
 					Window& window = windows.at(i);
 					if (window.enabled == true)
@@ -30,13 +29,13 @@ namespace studgine
 			}
 			
 		}
-		void ShowWindow(unsigned int pos)
+		void ShowWindow(uint32_t pos)
 		{
 			Window& window = windows.at(pos);
 			glfwShowWindow(window.GetWindow());
 			window.enabled = true;
 		}
-		void HideWindow(unsigned int pos)
+		void HideWindow(uint32_t pos)
 		{
 			Window& window = windows.at(pos);
 			glfwHideWindow(window.GetWindow());

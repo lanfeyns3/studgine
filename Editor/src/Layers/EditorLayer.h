@@ -13,6 +13,8 @@ namespace studgine
 				CLIENT_LOG_INFO("Adding Editor Window");
 				WindowsManager::AddWindow("Studgine Editor", 1280, 720);
 				CLIENT_LOG_INFO("Window added Succesfully");
+
+				EventManager::SubscribeLayer(LayerStack::Get(0),Events::EventTypes::KEYSTROKE);
 			}
 			void OnRemoved()
 			{
@@ -22,9 +24,10 @@ namespace studgine
 			{
 				
 			}
-			void OnEvent()
+			void OnEvent(void* data, uint32_t type)
 			{
-
+				uint32_t result = *(uint32_t*)data;
+				CLIENT_LOG_INFO(result);
 			}
 		};
 	}
