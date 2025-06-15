@@ -28,6 +28,11 @@ namespace studgine
 			{
 				uint32_t result = *(uint32_t*)data;
 				CLIENT_LOG_INFO(result);
+
+				if (result == GLFW_KEY_ESCAPE)
+				{
+					EventManager::AddEvent<Events::Shutdown>();
+				}
 			}
 		};
 	}

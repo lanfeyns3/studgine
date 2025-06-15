@@ -1,5 +1,11 @@
 #include "WindowsManager.h"
 
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	if (action == GLFW_PRESS)
+		studgine::EventManager::AddEvent<studgine::Events::Keystroke>(key);
+}
+
 namespace studgine
 {
 	namespace WindowsManager
@@ -14,6 +20,7 @@ namespace studgine
 			{
 				glfwMakeContextCurrent(windows.back().GetWindow());
 			}
+			glfwSetKeyCallback(windows.back().GetWindow(), key_callback);
 			return windows.back();
 		}
 		void UpdateWindows()

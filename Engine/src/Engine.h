@@ -7,6 +7,7 @@
 #include "Core/EventManager.h"
 
 #include "Core/Events/Event.h"
+#include "Core/Events/Shutdown.h"
 #include "Core/Events/Keystroke.h"
 
 #include <GLFW/glfw3.h>

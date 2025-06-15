@@ -14,6 +14,9 @@ namespace studgine
 		~Application() = default;
 
 		void Run();
+		void Shutdown(void* data, uint32_t type);
+	private:
+		bool m_running;
 	};
 }
 

@@ -3,6 +3,8 @@
 
 #pragma once
 #include "Window.h"
+#include "Events/Keystroke.h"
+#include "EventManager.h"
 #include <vector>
 
 namespace studgine

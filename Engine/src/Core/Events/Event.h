@@ -11,6 +11,7 @@ namespace studgine
 		enum EventTypes
 		{
 			ALL,
+			SHUTDOWN,
 			KEYSTROKE,
 		};
 
