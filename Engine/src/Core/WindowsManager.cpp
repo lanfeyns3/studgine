@@ -30,9 +30,21 @@ namespace studgine
 				for (uint32_t i = 0; i < windows.size(); i++)
 				{
 					Window& window = windows.at(i);
-					if (window.enabled == true)
-						glfwSwapBuffers(window.GetWindow());
+					if (glfwWindowShouldClose(window.GetWindow()))
+					{
+						glfwDestroyWindow(window.GetWindow());
+						windows.erase(windows.begin() + i);
+					}
+					else
+					{
+						if (window.enabled == true)
+							glfwSwapBuffers(window.GetWindow());
+					}
 				}
+			}
+			else
+			{
+				EventManager::AddEvent<Events::Shutdown>();
 			}
 			
 		}

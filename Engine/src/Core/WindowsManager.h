@@ -4,6 +4,7 @@
 #pragma once
 #include "Window.h"
 #include "Events/Keystroke.h"
+#include "Events/Shutdown.h"
 #include "EventManager.h"
 #include <vector>
 
