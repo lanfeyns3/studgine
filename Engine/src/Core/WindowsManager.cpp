@@ -8,57 +8,52 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 namespace studgine
 {
-	namespace WindowsManager
+
+	Window& WindowsManager::AddWindow(const char* name, int width, int height, GLFWwindow* share)
 	{
-
-		std::vector<Window> windows;
-
-		Window& AddWindow(const char* name, int width, int height, GLFWwindow* share)
+		windows.emplace_back(name, width, height, share);
+		if (windows.size() == 1)
 		{
-			windows.emplace_back(name, width, height, share);
-			if (windows.size() == 1)
-			{
-				glfwMakeContextCurrent(windows.back().GetWindow());
-			}
-			glfwSetKeyCallback(windows.back().GetWindow(), key_callback);
-			return windows.back();
+			glfwMakeContextCurrent(windows.back().GetWindow());
 		}
-		void UpdateWindows()
+		glfwSetKeyCallback(windows.back().GetWindow(), key_callback);
+		return windows.back();
+	}
+	void WindowsManager::UpdateWindows()
+	{
+		if (windows.size() > 0)
 		{
-			if (windows.size() > 0)
+			for (uint32_t i = 0; i < windows.size(); i++)
 			{
-				for (uint32_t i = 0; i < windows.size(); i++)
+				Window& window = windows.at(i);
+				if (glfwWindowShouldClose(window.GetWindow()))
 				{
-					Window& window = windows.at(i);
-					if (glfwWindowShouldClose(window.GetWindow()))
-					{
-						glfwDestroyWindow(window.GetWindow());
-						windows.erase(windows.begin() + i);
-					}
-					else
-					{
-						if (window.enabled == true)
-							glfwSwapBuffers(window.GetWindow());
-					}
+					glfwDestroyWindow(window.GetWindow());
+					windows.erase(windows.begin() + i);
+				}
+				else
+				{
+					if (window.enabled == true)
+						glfwSwapBuffers(window.GetWindow());
 				}
 			}
-			else
-			{
-				ServiceLocator::GetInstance().GetService<EventManager>()->AddEvent<Events::Shutdown>();
-			}
-			
 		}
-		void ShowWindow(uint32_t pos)
+		else
 		{
-			Window& window = windows.at(pos);
-			glfwShowWindow(window.GetWindow());
-			window.enabled = true;
+			ServiceLocator::GetInstance().GetService<EventManager>()->AddEvent<Events::Shutdown>();
 		}
-		void HideWindow(uint32_t pos)
-		{
-			Window& window = windows.at(pos);
-			glfwHideWindow(window.GetWindow());
-			window.enabled = false;
-		}
+
+	}
+	void WindowsManager::ShowWindow(uint32_t pos)
+	{
+		Window& window = windows.at(pos);
+		glfwShowWindow(window.GetWindow());
+		window.enabled = true;
+	}
+	void WindowsManager::HideWindow(uint32_t pos)
+	{
+		Window& window = windows.at(pos);
+		glfwHideWindow(window.GetWindow());
+		window.enabled = false;
 	}
 }

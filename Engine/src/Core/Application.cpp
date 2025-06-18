@@ -10,11 +10,12 @@ namespace studgine
 	}
 	void Application::Run()
 	{
+		ServiceLocator& serviceLocator = ServiceLocator::GetInstance();
 		while (m_running)
 		{
-			LayerStack::UpdateLayers();
-			ServiceLocator::GetInstance().GetService<EventManager>()->PollEvents();
-			WindowsManager::UpdateWindows();
+			serviceLocator.GetService<LayerStack>()->UpdateLayers();
+			serviceLocator.GetService<EventManager>()->PollEvents();
+			serviceLocator.GetService<WindowsManager>()->UpdateWindows();
 		}
 	}
 	void Application::Shutdown(void* data, uint32_t type)

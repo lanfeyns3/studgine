@@ -5,7 +5,7 @@
 int main()
 {
 	studgine::Application app;
-	studgine::LayerStack::AddLayer<studgine::Layers::EditorLayer>();
+	studgine::ServiceLocator::GetInstance().GetService<studgine::LayerStack>()->AddLayer<studgine::Layers::EditorLayer>();
 
 	app.Run();
 }

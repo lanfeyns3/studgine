@@ -11,17 +11,17 @@
 
 namespace studgine
 {
-	namespace WindowsManager
+	class WindowsManager
 	{
-
+	public:
 		Window& AddWindow(const char* name, int width, int height, GLFWwindow* share = nullptr);
 		void UpdateWindows();
 
 		void ShowWindow(uint32_t pos);
 		void HideWindow(uint32_t pos);
 
-		extern std::vector<Window> windows;
-	}
+		std::vector<Window> windows;
+	};
 }
 
 #endif // !SG_WINDOWSMANAGER
