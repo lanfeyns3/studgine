@@ -6,6 +6,7 @@
 #include "Events/Keystroke.h"
 #include "Events/Shutdown.h"
 #include "EventManager.h"
+#include "ServiceLocator.h"
 #include <vector>
 
 namespace studgine

@@ -7,7 +7,7 @@ add_subdirectory("thirdparty/spdlog")
 add_subdirectory("thirdparty/GLFW")
 
 project(Engine)
-add_library(Engine STATIC "Engine/src/Core/Application.cpp" "Engine/src/Core/LayerStack.cpp" "Engine/src/Core/Logging.cpp" "Engine/src/Core/Logging.h" "Engine/src/Core/Window.h" "Engine/src/Core/Window.cpp" "Engine/src/Core/WindowsManager.h" "Engine/src/Core/WindowsManager.cpp" "Engine/src/Core/Events/Event.h" "Engine/src/Core/EventManager.h" "Engine/src/Core/EventManager.cpp" "Engine/src/Core/Events/Keystroke.h" "Engine/src/Core/Events/Shutdown.h")
+add_library(Engine STATIC "Engine/src/Core/Application.cpp" "Engine/src/Core/LayerStack.cpp" "Engine/src/Core/Logging.cpp" "Engine/src/Core/Logging.h" "Engine/src/Core/Window.h" "Engine/src/Core/Window.cpp" "Engine/src/Core/WindowsManager.h" "Engine/src/Core/WindowsManager.cpp" "Engine/src/Core/Events/Event.h" "Engine/src/Core/EventManager.h" "Engine/src/Core/EventManager.cpp" "Engine/src/Core/Events/Keystroke.h" "Engine/src/Core/Events/Shutdown.h" "Engine/src/Core/ServiceLocator.cpp" "Engine/src/Core/ServiceLocator.h" )
 target_link_libraries(Engine PUBLIC spdlog glfw)
 target_include_directories(Engine PUBLIC "thirdparty/spdlog/include/" "thirdparty/GLFW/include/")
 

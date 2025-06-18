@@ -3,6 +3,7 @@
 #include "Core/Logging.h"
 #include "Core/Window.h"
 
+#include "Core/ServiceLocator.h"
 #include "Core/WindowsManager.h"
 #include "Core/EventManager.h"
 

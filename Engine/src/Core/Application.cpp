@@ -6,14 +6,14 @@ namespace studgine
 		: m_running(true)
 	{
 		InitLogging();
-		EventManager::SubscribeFunction([this](void* data, uint32_t type) { Shutdown(data, type); }, Events::EventTypes::SHUTDOWN);
+		ServiceLocator::GetInstance().GetService<EventManager>()->SubscribeFunction([this](void* data, uint32_t type) { Shutdown(data, type); }, Events::EventTypes::SHUTDOWN);
 	}
 	void Application::Run()
 	{
 		while (m_running)
 		{
 			LayerStack::UpdateLayers();
-			EventManager::PollEvents();
+			ServiceLocator::GetInstance().GetService<EventManager>()->PollEvents();
 			WindowsManager::UpdateWindows();
 		}
 	}

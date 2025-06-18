@@ -2,67 +2,58 @@
 
 namespace studgine
 {
-	
-	namespace EventManager
+	void EventManager::PollEvents()
 	{
-		std::shared_mutex g_eventsMutex;
-		std::vector<Events::Event*> g_eventsFront;
-		std::vector<Events::Event*> g_eventsBack;
-		std::unordered_map<uint32_t, std::vector<std::weak_ptr<Layers::Layer>>> g_layers;
-		std::unordered_map<uint32_t, std::vector<std::function<void(void*, uint32_t)>>> g_functions;
-		void PollEvents()
+		glfwPollEvents();
+
+		std::vector<std::thread> threads;
 		{
-			glfwPollEvents();
+			std::unique_lock lock(m_eventsMutex);
+			m_eventsFront = m_eventsBack;
+			m_eventsBack.clear();
+			m_eventsBack.clear();
+		}
 
-			std::vector<std::thread> threads;
-			{
-				std::unique_lock lock(g_eventsMutex);
-				g_eventsFront = g_eventsBack;
-				g_eventsBack.clear();
-				g_eventsBack.clear();
-			}
-
-			for (auto& event : g_eventsFront)
-			{
-				threads.emplace_back([&]()
+		for (auto& event : m_eventsFront)
+		{
+			threads.emplace_back([&]()
+				{
+					for (std::weak_ptr<Layers::Layer> layer : m_layers[event->GetType()])
 					{
-						for (std::weak_ptr<Layers::Layer> layer : g_layers[event->GetType()])
+						if (auto content = layer.lock())
 						{
-							if (auto content = layer.lock())
+							if (content->enabled)
 							{
-								if (content->enabled)
-								{
-									content->OnEvent(event->GetData(), event->GetType());
-								}
+								content->OnEvent(event->GetData(), event->GetType());
 							}
 						}
-					});
+					}
+				});
 
-				threads.emplace_back([&]()
+			threads.emplace_back([&]()
+				{
+					for (auto function : m_functions[event->GetType()])
 					{
-						for (auto function : g_functions[event->GetType()])
-						{
-							function(event->GetData(), event->GetType());
-						}
-					});
-			}
+						function(event->GetData(), event->GetType());
+					}
+				});
+		}
 
-			
-			for (auto& thread : threads)
-			{
-				thread.join();
-			}
-			
-			g_eventsFront.clear();
-			
-		}
-		void SubscribeLayer(std::shared_ptr<Layers::Layer> layer, uint32_t type)
+
+		for (auto& thread : threads)
 		{
-			g_layers[type].emplace_back(layer);
+			thread.join();
 		}
-		void SubscribeFunction(std::function<void(void*, uint32_t)> function, uint32_t type)
-		{
-			g_functions[type].emplace_back(function);
-		}
+
+		m_eventsFront.clear();
+
+	}
+	void EventManager::SubscribeLayer(std::shared_ptr<Layers::Layer> layer, uint32_t type)
+	{
+		m_layers[type].emplace_back(layer);
+	}
+	void EventManager::SubscribeFunction(std::function<void(void*, uint32_t)> function, uint32_t type)
+	{
+		m_functions[type].emplace_back(function);
 	}
 }

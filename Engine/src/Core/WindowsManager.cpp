@@ -3,7 +3,7 @@
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if (action == GLFW_PRESS)
-		studgine::EventManager::AddEvent<studgine::Events::Keystroke>(key);
+		studgine::ServiceLocator::GetInstance().GetService<studgine::EventManager>()->AddEvent<studgine::Events::Keystroke>(key);
 }
 
 namespace studgine
@@ -44,7 +44,7 @@ namespace studgine
 			}
 			else
 			{
-				EventManager::AddEvent<Events::Shutdown>();
+				ServiceLocator::GetInstance().GetService<EventManager>()->AddEvent<Events::Shutdown>();
 			}
 			
 		}

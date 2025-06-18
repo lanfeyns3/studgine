@@ -14,7 +14,7 @@ namespace studgine
 				WindowsManager::AddWindow("Studgine Editor", 1280, 720);
 				CLIENT_LOG_INFO("Window added Succesfully");
 
-				EventManager::SubscribeLayer(LayerStack::Get(0),Events::EventTypes::KEYSTROKE);
+				ServiceLocator::GetInstance().GetService<EventManager>()->SubscribeLayer(LayerStack::Get(0),Events::EventTypes::KEYSTROKE);
 			}
 			void OnRemoved()
 			{
@@ -31,7 +31,7 @@ namespace studgine
 
 				if (result == GLFW_KEY_ESCAPE)
 				{
-					EventManager::AddEvent<Events::Shutdown>();
+					ServiceLocator::GetInstance().GetService<EventManager>()->AddEvent<Events::Shutdown>();
 				}
 			}
 		};
