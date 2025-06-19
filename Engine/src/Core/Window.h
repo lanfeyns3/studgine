@@ -1,6 +1,9 @@
 #ifndef SG_WINDOW
 #define SG_WINDOW
 
+#define GLFW_INCLUDE_VULKAN
+#include "../Renderer/2D/Renderer2D.h"
+#include "ServiceLocator.h"
 #include <GLFW/glfw3.h>
 #include "Logging.h"
 
