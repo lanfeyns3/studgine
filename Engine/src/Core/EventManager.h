@@ -11,6 +11,9 @@
 #include <shared_mutex>
 #include <thread>
 #include <functional>
+#ifdef __linux__
+#include <mutex>
+#endif
 
 #include<GLFW/glfw3.h>
 
