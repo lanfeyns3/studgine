@@ -5,7 +5,6 @@ namespace studgine
 	Application::Application()
 		: m_running(true)
 	{
-		InitLogging();
 		ServiceLocator::GetInstance().GetService<EventManager>()->SubscribeFunction([this](void* data, uint32_t type) { Shutdown(data, type); }, Events::EventTypes::SHUTDOWN);
 	}
 	void Application::Run()

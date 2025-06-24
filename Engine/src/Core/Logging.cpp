@@ -1,7 +1,11 @@
 #include "Logging.h"
 
-void studgine::InitLogging()
+namespace studgine
 {
-	auto engine = spdlog::stdout_color_mt("ENGINE");
-	auto console = spdlog::stdout_color_mt("CLIENT");
+	Logging::Logging()
+	{
+		spdlog::set_pattern("%^[%n][%T]: %v%$");
+		engine = spdlog::stdout_color_mt("ENGINE");
+		client = spdlog::stdout_color_mt("CLIENT");
+	}
 }
