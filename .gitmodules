@@ -1,9 +1,9 @@
-[submodule "thirdparty/GLFW"]
-	path = thirdparty/GLFW
-	url = https://github.com/TheCherno/glfw.git
 [submodule "thirdparty/entt"]
 	path = thirdparty/entt
 	url = https://github.com/skypjack/entt.git
 [submodule "thirdparty/spdlog"]
 	path = thirdparty/spdlog
 	url = https://github.com/lanfeyns3/spdlog.git
+[submodule "thirdparty/GLFW"]
+	path = thirdparty/GLFW
+	url = https://github.com/TheCherno/glfw.git
