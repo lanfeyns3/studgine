@@ -3,7 +3,7 @@
 	url = https://github.com/skypjack/entt.git
 [submodule "thirdparty/spdlog"]
 	path = thirdparty/spdlog
-	url = https://github.com/lanfeyns3/spdlog.git
+	url = https://github.com/gabime/spdlog.git
 [submodule "thirdparty/GLFW"]
 	path = thirdparty/GLFW
-	url = https://github.com/TheCherno/glfw.git
+	url = https://github.com/glfw/glfw.git
