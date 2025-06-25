@@ -6,6 +6,7 @@
 #include "Core/ServiceLocator.h"
 #include "Core/WindowsManager.h"
 #include "Core/EventManager.h"
+#include "Core/ECS.h"
 
 #include "Core/Events/Event.h"
 #include "Core/Events/Shutdown.h"

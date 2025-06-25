@@ -15,7 +15,6 @@ namespace studgine
 				CLIENT_LOG_INFO("Adding Editor Window");
 				serviceLocator.GetService<WindowsManager>()->AddWindow("Studgine Editor", 1280, 720);
 				CLIENT_LOG_INFO("Window added Succesfully");
-
 				serviceLocator.GetService<EventManager>()->SubscribeLayer(serviceLocator.GetService<LayerStack>()->Get(0), Events::EventTypes::KEYSTROKE);
 			}
 			void OnRemoved()
